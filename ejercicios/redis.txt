@@ -1,0 +1,91 @@
+
+3-- strings
+set nombre lautaro
+
+get nombre lautaro
+
+del nombre
+
+
+4-- hashes
+hmset computer cpu 'ryzen 5 3600' ram '8gb ddr4' mother 'asus bm450'
+
+hgetall cumputer
+
+5-- lists
+
+rpush years '2001'
+rpush years '2002'
+rpush years '2003'
+rpush years '2004'
+rpush years '2005'
+
+lrange years 0 4
+
+6-- sets  
+
+sadd lenguajes 'python'
+sadd lenguajes 'c+'
+sadd lenguajes 'java'
+sadd lenguajes 'javascript'
+sadd lenguajes 'rubi'
+
+smembers lenguajes
+
+7-- sorted sets
+ 
+zadd provinces 1 'cordoba'
+zadd provinces 2 'buenos aires'
+zadd provinces 3 'santa fe'
+zadd provinces 4 'san luis'
+
+zrange provinces 0 4 withscores
+
+8-- publish suscribe
+
+suscribe channel
+
+publish channel 'netflix'
+
+unsubscribe channel
+
+9-- transactions
+
+multi
+OK
+
+set nombre 'lautaro'
+QUEUED
+
+set apellido 'chaile'
+QUEUED
+
+get nombre
+QUEUED
+
+get apellido
+QUEUED
+
+exec
+1) OK
+2) OK
+3) "lautaro"
+4) "chaile"
+
+10-- Investigate backups
+
+save o bgsave : By default Redis saves snapshots of the dataset 
+on disk, in a binary file called dump.rdb
+
+example: save 60 1000
+
+This configuration will make Redis automatically dump the dataset 
+to disk every 60 seconds if at least 1000 keys changed.
+
+
+
+11-- Investigate Benchmarks
+
+12-- application
+
+
